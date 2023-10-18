@@ -34,6 +34,12 @@ export default function ToDoListApp() {
                 <input type="text" name="tache" id="tache" placeholder='Saisir une description ...' value={tache} onChange={(e) => setTache(e.target.value)}/>
                 <button onClick={addTache}><GrAddCircle /> Add</button>
             </div>
+            <div className='stats'>
+                <ul>
+                    <li>Nombre terminé : {taches.filter(t => t.completed).length}</li>
+                    <li>Nombre En cours : {taches.filter(t => !t.completed).length}</li>
+                </ul>
+            </div>
             <div className='taches'>
                 {taches.map((t, index) => 
                     <div key={index} className='tache'>
