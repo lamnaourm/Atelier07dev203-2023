@@ -13,7 +13,19 @@ export default function ToDoListApp() {
     const [tache, setTache] = useState('')
 
     const addTache = () => {
+        if(tache.trim() === ''){
+            alert('tache vide');
+            return;
+        }
+
+        if(taches.filter(t => t.description.toLowerCase() === tache.toLowerCase()).length > 0){
+            alert('tache existe deja');
+            return;
+        }
+
         setTaches(t => [...t, {description: tache, completed:false}])
+        setTache('')
+        document.getElementById('tache').focus()
     }
 
     return (
