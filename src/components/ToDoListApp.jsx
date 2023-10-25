@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { AiOutlineCheck } from 'react-icons/ai'
+import { AiOutlineCheck, AiTwotoneEdit } from 'react-icons/ai'
 import { GiCancel } from 'react-icons/gi'
 import { GrAddCircle } from 'react-icons/gr'
+import { BsFillTrashFill } from 'react-icons/bs'
 
 export default function ToDoListApp() {
 
@@ -48,6 +49,15 @@ export default function ToDoListApp() {
         setTaches(taches => taches.filter(t => t.completed));
     }
 
+    const deletetache = (ind) => {
+        setTaches(taches => taches.filter((t, index) => ind !== index));
+    }
+
+    const modifTache = (ind) => {
+        setTaches(taches => taches.map((t, index) => ind!==index ?t:{...t, completed:!t.completed}));
+
+    }
+
     return (
         <div className='todolist'>
             <div className='action'>
@@ -78,10 +88,13 @@ export default function ToDoListApp() {
                 <div className='taches'>
                     {taches.map((t, index) =>
                         <div key={index} className='tache'>
-                            <h3>{t.description}</h3>
-                            {
+                            <h3>{
                                 t.completed ? <AiOutlineCheck /> : <GiCancel />
-                            }
+                            } {t.description}</h3>
+                            <div>
+                                <button onClick={() => modifTache(index)}><AiTwotoneEdit /> </button>
+                                <button onClick={() => deletetache(index)}><BsFillTrashFill /> </button>
+                            </div>
                         </div>
                     )}
                 </div>

@@ -26,6 +26,7 @@
   gap: 200px;
   background: rgb(232, 207, 207);
   padding: 5px;
+  justify-content: space-between;
 }
 
 .tache h3 {
