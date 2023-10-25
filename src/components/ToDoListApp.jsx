@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { AiOutlineCheck, AiTwotoneEdit } from 'react-icons/ai'
-import { GiCancel } from 'react-icons/gi'
-import { BsFillTrashFill } from 'react-icons/bs'
 import AddTask from './AddTask'
+import RemoveTasks from './RemoveTasks'
+import ModifTasks from './ModifTasks'
+import StatsTasks from './StatsTasks'
+import ListTasks from './ListTasks'
 
 export default function ToDoListApp() {
 
@@ -62,39 +63,12 @@ export default function ToDoListApp() {
         <div className='todolist'>
             <div className='action'>
                 <AddTask tache={tache} handleChange={(e) => setTache(e.target.value)} addTache={addTache}/>
-                <fieldset>
-                    <legend>Suppression</legend>
-                    <button onClick={deleteAll}>Tous</button>
-                    <button onClick={deleteTermine}>Terminé</button>
-                    <button onClick={deleteEncours}>En cours</button>
-                </fieldset>
-                <fieldset>
-                    <legend>Modification</legend>
-                    <button onClick={modifAllTermine}>Tous Terminé</button>
-                    <button onClick={modifAllEncours}>Tous En cours</button>
-                </fieldset>
+                <RemoveTasks deleteAll={deleteAll} deleteTermine={deleteTermine} deleteEncours={deleteEncours}/>
+                <ModifTasks modifAllTermine={modifAllTermine} modifAllEncours={modifAllEncours}/>
             </div>
             <div>
-                <div className='stats'>
-                    <ul>
-                        <li>Nombre totale : {taches.length}</li>
-                        <li>Nombre terminé : {taches.filter(t => t.completed).length}</li>
-                        <li>Nombre En cours : {taches.filter(t => !t.completed).length}</li>
-                    </ul>
-                </div>
-                <div className='taches'>
-                    {taches.map((t, index) =>
-                        <div key={index} className='tache'>
-                            <h3>{
-                                t.completed ? <AiOutlineCheck /> : <GiCancel />
-                            } {t.description}</h3>
-                            <div>
-                                <button onClick={() => modifTache(index)}><AiTwotoneEdit /> </button>
-                                <button onClick={() => deletetache(index)}><BsFillTrashFill /> </button>
-                            </div>
-                        </div>
-                    )}
-                </div>
+                <StatsTasks taches={taches} />
+                <ListTasks taches={taches} modifTache={modifTache} deletetache={deletetache} />
             </div>
         </div>
     )
