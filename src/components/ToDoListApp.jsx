@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { AiOutlineCheck, AiTwotoneEdit } from 'react-icons/ai'
 import { GiCancel } from 'react-icons/gi'
-import { GrAddCircle } from 'react-icons/gr'
 import { BsFillTrashFill } from 'react-icons/bs'
+import AddTask from './AddTask'
 
 export default function ToDoListApp() {
 
@@ -61,10 +61,7 @@ export default function ToDoListApp() {
     return (
         <div className='todolist'>
             <div className='action'>
-                <div className='add'>
-                    <input type="text" name="tache" id="tache" placeholder='Saisir une description ...' value={tache} onChange={(e) => setTache(e.target.value)} />
-                    <button onClick={addTache}><GrAddCircle /> Add</button>
-                </div>
+                <AddTask tache={tache} handleChange={(e) => setTache(e.target.value)} addTache={addTache}/>
                 <fieldset>
                     <legend>Suppression</legend>
                     <button onClick={deleteAll}>Tous</button>
