@@ -10,7 +10,9 @@
   padding: 20px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   background-color: white;
-
+  width: fit-content;
+  display: flex;
+  gap: 30px;
 }
 
 .taches {
@@ -21,7 +23,9 @@
 
 .tache {
   display: flex;
-  gap: 100px;
+  gap: 200px;
+  background: rgb(232, 207, 207);
+  padding: 5px;
 }
 
 .tache h3 {
@@ -29,3 +33,17 @@
   padding: 0;
   font-size: 13px;
 }
+
+fieldset {
+  display: flex;
+  gap: 4px;
+}
+
+fieldset button {
+  flex-grow: 1;
+}
+
+ul {
+  margin-top: 0;
+}
+
